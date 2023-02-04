@@ -1,3 +1,7 @@
+# Sean Fletcher, Aimee Haus, SJ Franklin
+# COS 470 - Natural Language Processing
+# Lab 2 - February 3, 2023
+
 
 # imports
 from datetime import datetime
@@ -121,7 +125,7 @@ def file_content_to_string(file_name):
     :param file_name: string
     :return: string
     """
-    with open(file_name, "r") as file:
+    with open(file_name, "r", encoding = "utfa") as file:
         return file.read()
 
 
@@ -206,6 +210,7 @@ def get_all_the_regex_matches(list_of_file_paths, function):
     return big_list_of_matches
 
 
+# Runs all of our functions to display our dates
 def run_step_02(directory_path):
     paths_list = traverse_directory(directory_path)
 
@@ -218,7 +223,7 @@ def run_step_02(directory_path):
     for match in all_the_regex_matches:
         list_of_raw_dates.append(match[0])
 
-    # this reformatts the dates
+    # this reformats the dates
     list_of_formatted_dates = []
     for date in list_of_raw_dates:
         list_of_formatted_dates.append(date_reformatter(date))
@@ -226,6 +231,7 @@ def run_step_02(directory_path):
     return list_of_formatted_dates
 
 
+# Runs all of our functions to display our word cloud
 def run_the_extra_credit(directory_path):
     paths_list = traverse_directory(directory_path)
     # second param is: grab_numbers_and_surrounding_words
@@ -244,7 +250,7 @@ def run_the_extra_credit(directory_path):
 the_directory_path = "TLS-Covid19/txt"
 
 # # call the Step 2 function
-# print(run_step_02(the_directory_path))
+print(run_step_02(the_directory_path))
 
 # call the extra credit function
 run_the_extra_credit(the_directory_path)
